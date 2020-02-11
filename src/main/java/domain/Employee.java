@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 public class Employee {
 
     @Id
@@ -40,12 +40,13 @@ public class Employee {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "employee_technology",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "technology")
+            joinColumns = @JoinColumn( name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "tecnology_id")
     )
     private transient List<Technology> TechnologyList;
 
-    public Employee() {
+    public Employee(List<Technology> technologyList) {
+        TechnologyList = technologyList;
     }
 
     public Employee(String name, String surname, String patronic, Timestamp birthday, String sex, String telephone,
@@ -58,6 +59,9 @@ public class Employee {
         this.telephone = telephone;
         this.git_url = git_url;
         this.contacts = contacts;
+    }
+
+    public Employee() {
     }
 
     public Long getId() {

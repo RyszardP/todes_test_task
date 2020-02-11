@@ -8,6 +8,16 @@
     <artifactId>todes_test_task</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <properties>
+        <aspectj.version>1.6.11</aspectj.version>
+        <dbcp-version>1.4</dbcp-version>
+        <log4j>1.2.17</log4j>
+        <mysql.version>8.0.13</mysql.version>
+        <spring.version>5.1.5.RELEASE</spring.version>
+        <jackson.version>2.9.8</jackson.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>

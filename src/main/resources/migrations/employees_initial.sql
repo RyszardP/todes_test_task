@@ -15,13 +15,14 @@ CREATE TABLE employees (
   CREATE TABLE technology (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(60) NULL,
+  PRIMARY KEY (id)
 );
 
 
 CREATE TABLE employee_technology(
 employee_id INT NOT NULL,
 technology_id INT NOT NULL,
-PRIMARY KEY (employee_id, technology),
+PRIMARY KEY (employee_id, technology_id),
 FOREIGN KEY (employee_id) REFERENCES employees(id),
 FOREIGN KEY (technology_id) REFERENCES technology(id)
 );

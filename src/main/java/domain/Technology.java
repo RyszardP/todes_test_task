@@ -19,12 +19,23 @@ public class Technology {
     @ManyToMany(mappedBy = "technology")
     private transient List<Employee> employeeList;
 
-    public Technology() {
+    public Technology(List<Employee> employeeList) {
+        this.employeeList = employeeList;
     }
 
     public Technology(String name) {
         this.name = name;
     }
+
+    private Technology(TechnologyBuilder technologyBuilder) {
+        this.id = technologyBuilder.getId();
+        this.name = technologyBuilder.getName();
+    }
+
+
+    public Technology() {
+    }
+
 
     public Long getId() {
         return id;
@@ -42,21 +53,32 @@ public class Technology {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Technology)) return false;
+    public static class TechnologyBuilder {
+        private Long id;
+        private String name;
 
-        Technology that = (Technology) o;
+        public TechnologyBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        return name != null ? name.equals(that.name) : that.name == null;
-    }
+        public TechnologyBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
 
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        public Long getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Technology build() {
+            return new Technology(this);
+
+
+        }
     }
 }
