@@ -1,6 +1,7 @@
 package domain;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Employee {
     private String patronic;
 
     @Column(name = "birthday")
-    private Timestamp birthday;
+    private Date birthday;
 
     @Column(name = "sex")
     private String sex;
@@ -41,7 +42,7 @@ public class Employee {
     @JoinTable(
             name = "employee_technology",
             joinColumns = @JoinColumn( name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "tecnology_id")
+            inverseJoinColumns = @JoinColumn(name = "technology_id")
     )
     private transient List<Technology> TechnologyList;
 
@@ -49,7 +50,7 @@ public class Employee {
         TechnologyList = technologyList;
     }
 
-    public Employee(String name, String surname, String patronic, Timestamp birthday, String sex, String telephone,
+    public Employee(String name, String surname, String patronic, Date birthday, String sex, String telephone,
                     String git_url, String contacts) {
         this.name = name;
         this.surname = surname;
@@ -61,7 +62,20 @@ public class Employee {
         this.contacts = contacts;
     }
 
-    public Employee() {
+    public Employee(Long id, String name, String surname, String patronic, Date birthday, String sex, String telephone,
+                    String git_url, String contacts) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.patronic = patronic;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.telephone = telephone;
+        this.git_url = git_url;
+        this.contacts = contacts;
+    }
+
+    public Employee(Long id, String col, String surname, String patronic, java.util.Date date, String sex, String telephone, String git_url, String contacts) {
     }
 
     public Long getId() {
@@ -96,11 +110,11 @@ public class Employee {
         this.patronic = patronic;
     }
 
-    public Timestamp getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Timestamp birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

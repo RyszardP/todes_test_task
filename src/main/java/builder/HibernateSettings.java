@@ -1,11 +1,12 @@
-package hibernate;
+package builder;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HibrnateSession {
+public class HibernateSettings {
+
     private static SessionFactory sessionFactory;
 
     static {

@@ -23,16 +23,6 @@ public class Technology {
         this.employeeList = employeeList;
     }
 
-    public Technology(String name) {
-        this.name = name;
-    }
-
-    private Technology(TechnologyBuilder technologyBuilder) {
-        this.id = technologyBuilder.getId();
-        this.name = technologyBuilder.getName();
-    }
-
-
     public Technology() {
     }
 
@@ -53,32 +43,4 @@ public class Technology {
         this.name = name;
     }
 
-    public static class TechnologyBuilder {
-        private Long id;
-        private String name;
-
-        public TechnologyBuilder id(Long id) {
-            this.id = id;
-            return this;
-        }
-
-        public TechnologyBuilder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Long getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public Technology build() {
-            return new Technology(this);
-
-
-        }
-    }
 }

@@ -4,8 +4,8 @@ CREATE TABLE employees (
   surname VARCHAR(60) NULL,
   patronic VARCHAR(60) NULL,
   birthday TIMESTAMP(6) NULL,
-  sex VARCHAR(6) NULL,
-  telephone VARCHAR(15) NULL,
+  sex VARCHAR(7) NULL,
+  telephone VARCHAR(20) NULL,
   git_url VARCHAR(100) NULL,
   contacts VARCHAR(100) NULL,
   PRIMARY KEY (id)
